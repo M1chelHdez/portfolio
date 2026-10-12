@@ -1,0 +1,204 @@
+:host {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    // position: sticky;
+    // top: 0;
+    // z-index: 1000;
+    // width: 100%;
+    // background-color: #090f0e;
+    // border-bottom: 1px solid rgba(166, 181, 176, 0.12);
+    // backdrop-filter: blur(16px);
+    // -webkit-backdrop-filter: blur(16px);
+    // transition:
+    //     background-color 0.5s ease,
+    //     border-color 0.5s ease;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
+
+    background: rgba(9, 15, 14, 0.92);
+    border-bottom: 1px solid rgba(166, 181, 176, 0.12);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    transition:
+        background-color 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.nav-inner {
+    width: min(100% - 64px, 1240px);
+    min-height: 76px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.logo {
+    flex-shrink: 0;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    transition: color 0.6s ease;
+}
+
+.logo span {
+    color: var(--color-primary);
+}
+
+.logo:hover {
+    color: var(--color-primary-light);
+}
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(18px, 2.4vw, 32px);
+}
+
+.navlinks a {
+    position: relative;
+    padding-block: 8px;
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.6s ease;
+}
+
+.navlinks a::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    left: 0;
+    height: 1px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s ease;
+}
+
+.navlinks a:hover {
+    color: var(--color-primary-light);
+}
+
+.navlinks a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    padding: 11px;
+    border: 1px solid rgba(166, 181, 176, 0.25);
+    border-radius: 10px;
+    background-color: #121e1c;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-block: 4px;
+    border-radius: 2px;
+    background-color: #edf5f2;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.menu-toggle:hover {
+    background: var(--color-surface-hover);
+}
+
+@media (max-width: 760px) {
+    .nav-inner {
+        width: calc(100% - 36px);
+        min-height: 68px;
+        gap: 16px;
+    }
+
+    .menu-toggle {
+        display: block;
+        flex-shrink: 0;
+    }
+
+    .navlinks {
+        position: absolute;
+        top: calc(100% + 1px);
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 12px 18px 18px;
+        background: rgba(9, 15, 14, 0.97);
+        border-bottom: 1px solid var(--color-border);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(-8px);
+
+        transition:
+            opacity 0.55s ease,
+            transform 0.55s ease,
+            visibility 0s linear 0.55s;
+    }
+
+    .navlinks.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateY(0);
+
+        transition:
+            opacity 0.55s ease,
+            transform 0.55s ease,
+            visibility 0s;
+    }
+
+    .navlinks a {
+        padding: 12px 8px;
+        font-size: 0.95rem;
+    }
+
+    .navlinks a::after {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .navbar,
+    .logo,
+    .navlinks,
+    .navlinks a,
+    .navlinks a::after,
+    .menu-toggle span {
+        transition: none;
+    }
+}

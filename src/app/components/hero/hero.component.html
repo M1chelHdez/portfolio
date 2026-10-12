@@ -1,0 +1,177 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+
+    <!-- Columna izquierda: presentación -->
+    <div class="hero-content">
+      <span class="hero-tag">
+        <span class="status-dot"></span>
+        Desarrollador Java · Full Stack
+      </span>
+
+      <h1 id="hero-title">
+        Convierto necesidades en
+        <span class="highlight">soluciones de software.</span>
+      </h1>
+
+      <p class="hero-description">
+        Desarrollo aplicaciones web enfocadas en resolver problemas reales,
+        combinando una arquitectura sólida, código mantenible y experiencias
+        intuitivas para el usuario.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#proyectos">
+          Ver proyectos
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="btn btn-secondary" href="#contacto">
+          Contactarme
+        </a>
+      </div>
+
+      <div class="hero-footer">
+        <span class="footer-line"></span>
+        <span>De la idea al código, con propósito.</span>
+      </div>
+    </div>
+
+    <!-- Columna derecha: tarjeta tecnológica -->
+    <div class="hero-visual" aria-label="Vista ilustrativa de tecnologías de desarrollo">
+
+      <div class="visual-orbit orbit-one"></div>
+      <div class="visual-orbit orbit-two"></div>
+
+      <!-- Ventana de código -->
+      <div class="code-window">
+        <div class="code-header">
+          <div class="window-controls" aria-hidden="true">
+            <span class="control control-red"></span>
+            <span class="control control-yellow"></span>
+            <span class="control control-green"></span>
+          </div>
+
+          <div class="file-name">
+            <span class="file-icon">⌘</span>
+            Main.java
+          </div>
+
+          <span class="header-symbol">&lt;/&gt;</span>
+        </div>
+
+        <div class="code-body" aria-label="Ejemplo ilustrativo de código Java">
+          <div class="code-line">
+            <span class="line-number">1</span>
+            <code><span class="code-annotation">RestController</span></code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">2</span>
+            <code><span class="code-annotation">RequestMapping</span>(<span class="code-string">"/api/proyectos"</span>)</code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">3</span>
+            <code><span class="code-keyword">public class</span> <span class="code-class">ProyectoController</span> {{ '{' }}</code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">4</span>
+            <code>&nbsp;&nbsp;<span class="code-keyword">private final</span> <span class="code-class">ProyectoService</span> service;</code>
+          </div>
+
+          <div class="code-line code-gap">
+            <span class="line-number">5</span>
+            <code></code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">6</span>
+            <code>&nbsp;&nbsp;<span class="code-annotation">GetMapping</span></code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">7</span>
+            <code>&nbsp;&nbsp;<span class="code-keyword">public</span> <span class="code-class">List</span>&lt;<span class="code-class">ProyectoDTO</span>&gt; listar() {{ '{' }}</code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">8</span>
+            <code>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> service.listar();</code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">9</span>
+            <code>&nbsp;&nbsp; {{ '}' }}</code>
+          </div>
+
+          <div class="code-line">
+            <span class="line-number">10</span>
+            <code>{{ '}' }}</code>
+          </div>
+        </div>
+
+        <div class="code-status">
+          <span class="status-indicator"></span>
+          <span>Java · Spring Boot</span>
+          <span class="status-right">UTF-8</span>
+        </div>
+      </div>
+
+      <!-- Tecnologías -->
+      <div class="technology-card java-card">
+        <span class="technology-mark java-mark">J</span>
+        <div>
+          <strong>Java</strong>
+          <span>Backend</span>
+        </div>
+      </div>
+
+      <div class="technology-card spring-card">
+        <span class="technology-mark spring-mark">S</span>
+        <div>
+          <strong>Spring Boot</strong>
+          <span>REST APIs</span>
+        </div>
+      </div>
+
+      <div class="technology-card angular-card">
+        <span class="technology-mark angular-mark">A</span>
+        <div>
+          <strong>Angular</strong>
+          <span>Frontend</span>
+        </div>
+      </div>
+
+      <!-- Franja inferior -->
+      <div class="architecture-panel">
+        <div class="architecture-item">
+          <span class="architecture-icon database-icon">▤</span>
+          <strong>Datos</strong>
+          <span>MySQL · Oracle</span>
+        </div>
+
+        <div class="architecture-item">
+          <span class="architecture-icon api-icon">⌘</span>
+          <strong>APIs</strong>
+          <span>REST · SOAP</span>
+        </div>
+
+        <div class="architecture-item">
+          <span class="architecture-icon architecture-cube">◇</span>
+          <strong>Arquitectura</strong>
+          <span>Monolito · Microservicios</span>
+        </div>
+
+        <div class="architecture-item">
+          <span class="architecture-icon clean-icon">&lt;/&gt;</span>
+          <strong>Buenas prácticas</strong>
+          <span>Clean Code</span>
+        </div>
+      </div>
+
+      <span class="visual-dot visual-dot-one"></span>
+      <span class="visual-dot visual-dot-two"></span>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<header class="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="#inicio" aria-label="Portfolio, ir al inicio">
+      PORTFOLIO<span>.</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuAbierto"
+      aria-controls="navlinks"
+      [attr.aria-label]="menuAbierto ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="alternarMenu()"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      id="navlinks"
+      class="navlinks"
+      [class.open]="menuAbierto"
+      aria-label="Navegación principal"
+    >
+      <a href="#soluciones" (click)="cerrarMenu()">Soluciones</a>
+      <a href="#perfil" (click)="cerrarMenu()">Perfil</a>
+      <a href="#tecnologias" (click)="cerrarMenu()">Tecnologías</a>
+      <a href="#proyectos" (click)="cerrarMenu()">Proyectos</a>
+      <a href="#contacto" (click)="cerrarMenu()">Contacto</a>
+    </nav>
+  </div>
+</header>

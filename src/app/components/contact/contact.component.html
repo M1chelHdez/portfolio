@@ -1,0 +1,146 @@
+<section class="contact-section" id="contacto">
+  <div class="contact-inner">
+
+    <div class="contact-heading">
+      <span class="section-eyebrow">
+        <span class="heading-line"></span>
+        HABLEMOS
+      </span>
+
+      <h2>
+        ¿Hablamos de tu
+        <span>próximo proyecto?</span>
+      </h2>
+
+      <p>
+        Estoy abierto a nuevas oportunidades profesionales y proyectos
+        donde pueda aportar soluciones de software bien construidas.
+      </p>
+    </div>
+
+    <div class="contact-layout">
+
+      <div class="contact-info">
+        <h3>Conectemos</h3>
+
+        <p>
+          Si buscas un desarrollador Java Full Stack o quieres conversar
+          sobre una idea, estaré encantado de escucharte.
+        </p>
+
+        <div class="contact-availability">
+          <span class="availability-dot"></span>
+          Abierto a oportunidades laborales
+        </div>
+
+        <div class="contact-links">
+          <a href="mailto:tu-correo@ejemplo.com">
+            <span class="contact-link-icon" aria-hidden="true">&#64;</span>
+            <span>
+              <small>Correo electrónico</small>
+              <strong>tu-correo&#64;ejemplo.com</strong>
+            </span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+            <span class="contact-link-icon" aria-hidden="true">GH</span>
+            <span>
+              <small>GitHub</small>
+              <strong>Ver mis proyectos</strong>
+            </span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+            <span class="contact-link-icon" aria-hidden="true">in</span>
+            <span>
+              <small>LinkedIn</small>
+              <strong>Conectemos profesionalmente</strong>
+            </span>
+            <span class="contact-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="enviarFormulario()"
+        (input)="restablecerConfirmacion()" novalidate>
+        <div class="form-heading">
+          <h3>Envíame un mensaje</h3>
+          <p>Completa los campos y cuéntame en qué puedo ayudarte.</p>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="contact-name">Nombre</label>
+            <input id="contact-name" formControlName="name" type="text" placeholder="Tu nombre" autocomplete="name"
+              name="name" type="text" placeholder="Tu nombre" autocomplete="name" required />
+            @if (name.touched && name.hasError('required')) {
+            <small class="field-error">El nombre es obligatorio.</small>
+            } @else if (name.touched && name.hasError('minlength')) {
+            <small class="field-error">Escribe al menos 2 caracteres.</small>
+            } @else if (name.touched && name.hasError('maxlength')) {
+            <small class="field-error">El nombre no puede superar 80 caracteres.</small>
+            }
+          </div>
+
+          <div class="form-field">
+            <label for="contact-email">Correo electrónico</label>
+            <input id="contact-email" formControlName="email" type="email" placeholder="nombre&#64;ejemplo.com"
+              autocomplete="email" name="email" type="email" placeholder="nombre&#64;ejemplo.com" autocomplete="email"
+              required />
+            @if (email.touched && email.hasError('required')) {
+            <small class="field-error">El correo es obligatorio.</small>
+            } @else if (email.touched && email.hasError('email')) {
+            <small class="field-error">Introduce un correo válido.</small>
+            } @else if (email.touched && email.hasError('maxlength')) {
+            <small class="field-error">El correo es demasiado largo.</small>
+            }
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="contact-subject">Asunto</label>
+          <input id="contact-subject" formControlName="subject" type="text" placeholder="¿Sobre qué te gustaría hablar?"
+            name="subject" type="text" placeholder="¿Sobre qué te gustaría hablar?" required />
+          @if (subject.touched && subject.hasError('required')) {
+          <small class="field-error">El asunto es obligatorio.</small>
+          } @else if (subject.touched && subject.hasError('minlength')) {
+          <small class="field-error">Escribe al menos 3 caracteres.</small>
+          } @else if (subject.touched && subject.hasError('maxlength')) {
+          <small class="field-error">El asunto no puede superar 120 caracteres.</small>
+          }
+        </div>
+
+        <div class="form-field">
+          <label for="contact-message">Mensaje</label>
+          <textarea id="contact-message" formControlName="message" rows="5" placeholder="Cuéntame un poco más..."
+            name="message" rows="5" placeholder="Cuéntame un poco más..." required></textarea>
+          @if (message.touched && message.hasError('required')) {
+          <small class="field-error">El mensaje es obligatorio.</small>
+          } @else if (message.touched && message.hasError('minlength')) {
+          <small class="field-error">Escribe al menos 10 caracteres.</small>
+          } @else if (message.touched && message.hasError('maxlength')) {
+          <small class="field-error">El mensaje no puede superar 2000 caracteres.</small>
+          }
+        </div>
+
+        <button class="contact-submit" type="submit">
+          Validar mensaje
+          <span aria-hidden="true">↗</span>
+        </button>
+
+        @if (enviado) {
+        <output class="form-success">
+          Los datos son válidos. El envío de correos todavía no está habilitado.
+        </output>
+        }
+
+        <p class="form-note">
+          Tus datos se utilizarán únicamente para responder a tu mensaje.
+        </p>
+      </form>
+
+    </div>
+  </div>
+</section>
