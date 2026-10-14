@@ -16,6 +16,7 @@ import {
 export class ContactComponent {
   enviado = false;
   intentandoEnviar = false;
+  errorEnvio = '';
 
   readonly contactForm;
 
@@ -52,7 +53,8 @@ export class ContactComponent {
           Validators.minLength(10),
           Validators.maxLength(2000)
         ]
-      ]
+      ],
+      website: ['']
     });
   }
 
@@ -72,19 +74,61 @@ export class ContactComponent {
     return this.contactForm.controls.message;
   }
 
-  enviarFormulario(): void {
+  async enviarFormulario(): Promise<void> {
     this.contactForm.markAllAsTouched();
+    this.errorEnvio = '';
 
     if (this.contactForm.invalid || this.intentandoEnviar) {
       return;
     }
 
-    // Por ahora solo validamos los datos.
-    // El envío real se implementará después.
-    this.enviado = true;
+    this.intentandoEnviar = true;
+    this.enviado = false;
+
+    const { name, email, subject, message, website } =
+      this.contactForm.getRawValue();
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          subject,
+          message,
+          website
+        })
+      });
+
+      const result: { message?: string } = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || 'No se pudo enviar el mensaje.'
+        );
+      }
+
+      this.enviado = true;
+      this.contactForm.reset();
+
+      setTimeout(() => {
+        this.enviado = false;
+      }, 5000);
+    } catch (error: unknown) {
+      this.errorEnvio =
+        error instanceof Error
+          ? error.message
+          : 'Ocurrió un error inesperado. Inténtalo de nuevo.';
+    } finally {
+      this.intentandoEnviar = false;
+    }
   }
 
   restablecerConfirmacion(): void {
-  this.enviado = false;
-}
+    this.enviado = false;
+    this.errorEnvio = '';
+  }
 }

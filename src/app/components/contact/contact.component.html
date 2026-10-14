@@ -34,16 +34,16 @@
         </div>
 
         <div class="contact-links">
-          <a href="mailto:tu-correo@ejemplo.com">
+          <a href="mailto:hguillermomichael@gmail.com">
             <span class="contact-link-icon" aria-hidden="true">&#64;</span>
             <span>
               <small>Correo electrónico</small>
-              <strong>tu-correo&#64;ejemplo.com</strong>
+              <strong>hguillermomichael&#64;gmail.com</strong>
             </span>
             <span class="contact-arrow" aria-hidden="true">↗</span>
           </a>
 
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/M1chelHdez" target="_blank" rel="noopener noreferrer">
             <span class="contact-link-icon" aria-hidden="true">GH</span>
             <span>
               <small>GitHub</small>
@@ -52,7 +52,8 @@
             <span class="contact-arrow" aria-hidden="true">↗</span>
           </a>
 
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/michael-hern%C3%A1ndez-079885142/" target="_blank"
+            rel="noopener noreferrer">
             <span class="contact-link-icon" aria-hidden="true">in</span>
             <span>
               <small>LinkedIn</small>
@@ -125,14 +126,27 @@
           }
         </div>
 
-        <button class="contact-submit" type="submit">
-          Validar mensaje
+        <!-- Campo trampa para reducir envíos automatizados -->
+        <div class="honeypot" aria-hidden="true">
+          <label for="contact-website">No completar este campo</label>
+          <input id="contact-website" type="text" formControlName="website" name="website" tabindex="-1"
+            autocomplete="off" />
+        </div>
+
+        <button class="contact-submit" type="submit" [disabled]="intentandoEnviar">
+          {{ intentandoEnviar ? 'Enviando mensaje...' : 'Enviar mensaje' }}
           <span aria-hidden="true">↗</span>
         </button>
 
         @if (enviado) {
-        <output class="form-success">
-          Los datos son válidos. El envío de correos todavía no está habilitado.
+        <output class="form-success" role="status" aria-live="polite">
+          ¡Gracias por escribirme! Tu mensaje se envió correctamente.
+        </output>
+        }
+
+        @if (errorEnvio) {
+        <output class="form-error" role="alert">
+          {{ errorEnvio }}
         </output>
         }
 
